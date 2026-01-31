@@ -14,11 +14,21 @@ Use this skill when you need to:
 
 ## Authentication
 
-All requests require the `X-API-Token` header with a valid API token.
+All requests require the `X-API-Token` header. Use the `SPRINTFLINT_API_TOKEN` environment variable:
 
 ```bash
-curl -H "X-API-Token: your-token-here" https://sprintflint.com/api/v1/projects
+curl -H "X-API-Token: $SPRINTFLINT_API_TOKEN" https://sprintflint.com/api/v1/projects
 ```
+
+**Important:** The user must have `SPRINTFLINT_API_TOKEN` set in their environment. If it's not set, ask them to:
+
+1. Go to SprintFlint → Profile → API Token
+2. Generate a token
+3. Add `export SPRINTFLINT_API_TOKEN="token"` to their shell profile
+
+## Base URL
+
+All endpoints use: `https://sprintflint.com/api/v1`
 
 ## API Reference
 
