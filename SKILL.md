@@ -5,7 +5,6 @@ Interact with SprintFlint sprint ticketing platform through the REST API. Use th
 ## When to Use
 
 Use this skill when you need to:
-
 - List, create, or update projects
 - List, create, update, or manage sprints
 - List, create, update, or delete issues/tickets
@@ -21,7 +20,6 @@ curl -H "X-API-Token: $SPRINTFLINT_API_TOKEN" https://sprintflint.com/api/v1/pro
 ```
 
 **Important:** The user must have `SPRINTFLINT_API_TOKEN` set in their environment. If it's not set, ask them to:
-
 1. Go to SprintFlint → Profile → API Token
 2. Generate a token
 3. Add `export SPRINTFLINT_API_TOKEN="token"` to their shell profile
@@ -35,19 +33,16 @@ All endpoints use: `https://sprintflint.com/api/v1`
 ### Projects
 
 **List all projects:**
-
 ```bash
 GET /api/v1/projects
 ```
 
 **Get a project:**
-
 ```bash
 GET /api/v1/projects/{id}
 ```
 
 **Create a project:**
-
 ```bash
 POST /api/v1/projects
 Content-Type: application/json
@@ -62,7 +57,6 @@ Content-Type: application/json
 ```
 
 **Update a project:**
-
 ```bash
 PATCH /api/v1/projects/{id}
 Content-Type: application/json
@@ -75,7 +69,6 @@ Content-Type: application/json
 ```
 
 **Delete a project:** (admin only)
-
 ```bash
 DELETE /api/v1/projects/{id}
 ```
@@ -83,19 +76,16 @@ DELETE /api/v1/projects/{id}
 ### Sprints
 
 **List sprints in a project:**
-
 ```bash
 GET /api/v1/projects/{project_id}/sprints
 ```
 
 **Get a sprint:**
-
 ```bash
 GET /api/v1/projects/{project_id}/sprints/{id}
 ```
 
 **Create a sprint:**
-
 ```bash
 POST /api/v1/projects/{project_id}/sprints
 Content-Type: application/json
@@ -111,7 +101,6 @@ Content-Type: application/json
 ```
 
 **Update a sprint:**
-
 ```bash
 PATCH /api/v1/projects/{project_id}/sprints/{id}
 Content-Type: application/json
@@ -124,19 +113,16 @@ Content-Type: application/json
 ```
 
 **Activate a sprint:**
-
 ```bash
 POST /api/v1/projects/{project_id}/sprints/{id}/activate
 ```
 
 **Complete a sprint:**
-
 ```bash
 POST /api/v1/projects/{project_id}/sprints/{id}/complete
 ```
 
 **Delete a sprint:** (admin only)
-
 ```bash
 DELETE /api/v1/projects/{project_id}/sprints/{id}
 ```
@@ -144,19 +130,16 @@ DELETE /api/v1/projects/{project_id}/sprints/{id}
 ### Issues (Tickets)
 
 **List issues in a sprint:**
-
 ```bash
 GET /api/v1/projects/{project_id}/sprints/{sprint_id}/issues
 ```
 
 **Get an issue:**
-
 ```bash
 GET /api/v1/projects/{project_id}/sprints/{sprint_id}/issues/{id}
 ```
 
 **Create an issue:**
-
 ```bash
 POST /api/v1/projects/{project_id}/sprints/{sprint_id}/issues
 Content-Type: application/json
@@ -175,7 +158,6 @@ Content-Type: application/json
 Valid statuses: `backlog`, `todo`, `in_progress`, `done`, `cancelled`
 
 **Update an issue:**
-
 ```bash
 PATCH /api/v1/projects/{project_id}/sprints/{sprint_id}/issues/{id}
 Content-Type: application/json
@@ -189,7 +171,6 @@ Content-Type: application/json
 ```
 
 **Delete an issue:**
-
 ```bash
 DELETE /api/v1/projects/{project_id}/sprints/{sprint_id}/issues/{id}
 ```
@@ -197,19 +178,16 @@ DELETE /api/v1/projects/{project_id}/sprints/{sprint_id}/issues/{id}
 ### Comments
 
 **List comments on an issue:**
-
 ```bash
 GET /api/v1/projects/{project_id}/sprints/{sprint_id}/issues/{issue_id}/comments
 ```
 
 **Get a comment:**
-
 ```bash
 GET /api/v1/comments/{id}
 ```
 
 **Create a comment:**
-
 ```bash
 POST /api/v1/projects/{project_id}/sprints/{sprint_id}/issues/{issue_id}/comments
 Content-Type: application/json
@@ -222,7 +200,6 @@ Content-Type: application/json
 ```
 
 **Update a comment:** (author only)
-
 ```bash
 PATCH /api/v1/comments/{id}
 Content-Type: application/json
@@ -235,7 +212,6 @@ Content-Type: application/json
 ```
 
 **Delete a comment:** (author only)
-
 ```bash
 DELETE /api/v1/comments/{id}
 ```
@@ -243,7 +219,6 @@ DELETE /api/v1/comments/{id}
 ## Response Schemas
 
 ### Project
-
 ```json
 {
   "id": 1,
@@ -257,7 +232,6 @@ DELETE /api/v1/comments/{id}
 ```
 
 ### Sprint
-
 ```json
 {
   "id": 1,
@@ -276,7 +250,6 @@ DELETE /api/v1/comments/{id}
 ```
 
 ### Issue
-
 ```json
 {
   "id": 1,
@@ -296,7 +269,6 @@ DELETE /api/v1/comments/{id}
 ```
 
 ### Comment
-
 ```json
 {
   "id": 1,
@@ -312,27 +284,23 @@ DELETE /api/v1/comments/{id}
 ## Error Handling
 
 **401 Unauthorized** - Invalid or missing API token
-
 ```json
-{ "error": "Unauthorized" }
+{"error": "Unauthorized"}
 ```
 
 **403 Forbidden** - Not authorized for this action
-
 ```json
-{ "error": "Forbidden" }
+{"error": "Forbidden"}
 ```
 
 **404 Not Found** - Resource not found
-
 ```json
-{ "error": "Not found" }
+{"error": "Not found"}
 ```
 
 **422 Unprocessable Entity** - Validation errors
-
 ```json
-{ "errors": ["Title can't be blank", "Name is too short"] }
+{"errors": ["Title can't be blank", "Name is too short"]}
 ```
 
 ## Examples

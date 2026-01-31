@@ -28,26 +28,8 @@ SPRINTFLINT_API_TOKEN=your-token-here
 
 ### 3. Install the Skill
 
-**Option A: Clone to Cursor skills directory**
-
 ```bash
-# Cursor looks for skills in ~/.cursor/skills/
-git clone https://github.com/Ancez/sprintflint-skills.git ~/.cursor/skills/sprintflint
-```
-
-**Option B: Add to project**
-
-```bash
-# Add as a submodule or copy to your project
-git clone https://github.com/Ancez/sprintflint-skills.git .cursor/skills/sprintflint
-```
-
-**Option C: Reference directly**
-
-Point your AI assistant to read the skill file:
-
-```
-Read the skill at https://raw.githubusercontent.com/Ancez/sprintflint-skills/main/SKILL.md
+npx skills add Ancez/sprintflint-skills
 ```
 
 ## Usage
